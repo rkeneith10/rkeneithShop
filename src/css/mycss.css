@@ -1,0 +1,54 @@
+.lien > a {
+  color: #fff;
+  list-style-type: none;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.lien {
+  list-style-type: none;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.lien:hover {
+  text-decoration: none;
+}
+
+.rom {
+  transition: 1s;
+}
+.rom:hover {
+  filter: brightness(0.6);
+  transition: 1s;
+}
+
+.pied {
+  height: 300px;
+  background-color: #2a2d34;
+  color: #fff;
+}
+
+.input1::placeholder {
+  color: #fff;
+}
+
+.input2::placeholder {
+  color: #fff;
+}
+
+.input1 {
+  color: #fff;
+}
+
+#input2 {
+  color: #fff;
+}
+
+.separateur {
+  color: #fff;
+  background-color: #fff;
+  height: 1px;
+  width: 50%;
+  display: none;
+}
