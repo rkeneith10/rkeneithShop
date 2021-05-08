@@ -137,7 +137,7 @@ const NewProducts = () => {
         <div className="row">
           {products.splice([0], [10]).map((product) => (
             <div
-              className="col-lg-3 col-md-4 col-sm-6"
+              className="col-lg-3 col-md-4 col-sm-6 col-6"
               key={product.id}
               style={{ marginBottom: "20px" }}
             >
@@ -155,8 +155,7 @@ const NewProducts = () => {
                       color: "#67686d",
                     }}
                   >
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
+                    Some quick example text to build on the card title.
                   </p>
                   <p style={{ color: "#f45a40", fontSize: "16px," }}>
                     $ {product.id * 100}
