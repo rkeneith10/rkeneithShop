@@ -741,7 +741,7 @@ a.detail1 {
   display: inline-block;
 }
 .social-icons ul a.facebook {
-  /* background:url(../images/social.png) no-repeat 0px 0px; */
+  background: url(../images/social.png) no-repeat 0px 0px;
   width: 22px;
   height: 22px;
   display: block;
@@ -752,7 +752,7 @@ a.detail1 {
   -ms-transition: 0.5s all;
 }
 .social-icons ul a.twitter {
-  /* background: url(../images/social.png) no-repeat -33px 0px; */
+  background: url(../images/social.png) no-repeat -33px 0px;
   width: 22px;
   height: 22px;
   display: block;
@@ -764,7 +764,7 @@ a.detail1 {
   -ms-transition: 0.5s all;
 }
 .social-icons ul a.chrome {
-  /* background: url(../images/social.png) no-repeat -70px 0px; */
+  background: url(../images/social.png) no-repeat -70px 0px;
   width: 22px;
   height: 22px;
   display: block;
@@ -776,7 +776,7 @@ a.detail1 {
   -ms-transition: 0.5s all;
 }
 .social-icons ul a.vimeo {
-  /* background: url(../images/social.png) no-repeat -106px 0px; */
+  background: url(../images/social.png) no-repeat -106px 0px;
   width: 22px;
   height: 22px;
   display: block;
@@ -788,7 +788,7 @@ a.detail1 {
   -ms-transition: 0.5s all;
 }
 .social-icons ul a.rss {
-  /* background: url(../images/social.png) no-repeat -143px 0px; */
+  background: url(../images/social.png) no-repeat -143px 0px;
   width: 22px;
   height: 22px;
   display: block;
@@ -799,20 +799,23 @@ a.detail1 {
   -ms-transition: 0.5s all;
 }
 .social-icons ul a.facebook:hover {
-  /* background:url(../images/social.png) no-repeat 0px -23px; */
+  background: url(../images/social.png) no-repeat 0px -23px;
 }
 .social-icons ul a.twitter:hover {
-  /* background: url(../images/social.png) no-repeat -33px -23px; */
+  background: url(../images/social.png) no-repeat -33px -23px;
 }
 .social-icons ul a.chrome:hover {
-  /* background: url(../images/social.png) no-repeat -70px -23px; */
+  background: url(../images/social.png) no-repeat -70px -23px;
 }
 .social-icons ul a.vimeo:hover {
-  /* background: url(../images/social.png) no-repeat -106px -23px; */
+  background: url(../images/social.png) no-repeat -106px -23px;
 }
 .social-icons ul a.rss:hover {
-  /* background: url(../images/social.png) no-repeat -143px -23px; */
+  background: url(../images/social.png) no-repeat -143px -23px;
 }
+/* .iconAccount {
+  background: url(../images//iconAccount.png) no-repeat;
+} */
 .products-bottom-middle {
   padding-left: 1em;
   border-left: solid 1px #e3e3e3;

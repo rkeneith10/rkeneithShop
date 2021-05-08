@@ -8,6 +8,7 @@ import "../css/bootstrap.css";
 import "../css/nav.css";
 import "../css/style.css";
 import imageMenu from "../images/menu.png";
+import imgicon from "../images/Male User_32px.png";
 
 const handelMenu = () => {
   $(" ul.nav").slideToggle("slow", function () {});
@@ -72,21 +73,13 @@ const Menu = () => {
             </div>
             <div className="header-right">
               <ul>
-                <li className="phone">+371 282 20 760</li>
+                {/* <li className="phone">+371 282 20 760</li>
                 <li className="mail">
                   <a href="mailto:example@mail.com">eony321v@gmail.com</a>
-                </li>
+                </li> */}
                 <li className="checkout">
-                  <a href="add-to-cart.html">
-                    <span className="cart">$ 99.54</span>
-                    <span className="check">Checkout</span>
-                  </a>
-                  <div className="shopping">
-                    <h5>Your Shopping Cart is empty.</h5>
-                    <p>
-                      Give it purpose—fill it with books, movies, mobiles,
-                      cameras, toys and fashion jewellery.
-                    </p>
+                  <div className="iconAccount">
+                    <img src={imgicon} />
                   </div>
                 </li>
               </ul>

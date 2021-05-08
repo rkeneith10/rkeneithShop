@@ -7,115 +7,172 @@ import "../css/style.css";
 import "../css/mycss.css";
 
 function Footer() {
+  // const handleMessage = (e) => {
+  //   e.preventDefalut();
+  // };
   return (
     <div>
-      <div className="pied">
-        <div className="container" style={{ paddingTop: "25px" }}>
-          <div className="col-sm-3 ">
-            {/* <img src="../img/logo.jpg" style="width: 100%;height: 130px;"/> */}
-            <h3>RKENEITHSHOP</h3>
+      <div className="footer">
+        <div className="container">
+          <div className="col-md-3 stores-grid">
+            <div className="stores">
+              <h3>Our Stores</h3>
+              <ul>
+                <li>Feel free to visit all the stores or contact us.</li>
+                <li>F66, Champin, </li>
+                <li>Cap-Haitien, Haiti </li>
+                <li>(509) 3839-6075</li>
+
+                <span>
+                  <li class="drive">65, RUe Chareron </li>
+                  <li>Port-au-Prince, Haiti</li>
+                  <li>(509) 3839-6075 </li>
+                </span>
+              </ul>
+            </div>
+            <div className="social-icons white-icons">
+              <ul>
+                <li>
+                  <a href="#" className="facebook"></a>
+                </li>
+                <li>
+                  <a href="#" className="twitter"></a>
+                </li>
+                <li>
+                  <a href="#" className="chrome"></a>
+                </li>
+                <li>
+                  <a href="#" className="vimeo"></a>
+                </li>
+                <li>
+                  <a href="#" className="rss"></a>
+                </li>
+              </ul>
+            </div>
           </div>
 
-          <div className="col-sm-3" style={{ color: "#fff" }}>
-            <ul>
-              <li className="lien">
-                <Link to="/">HOME</Link>
-              </li>
-              <li className="lien">
-                <Link to="/">MEN</Link>
-              </li>
-              <li className="lien">
-                <Link to="/">WOMEN</Link>
-              </li>
-              <li className="lien">
-                <Link to="/">KIDS</Link>
-              </li>
-            </ul>
-
-            <hr className="separateur" />
+          <div className="col-md-3 blog">
+            <h3>Blog posts</h3>
+            <a href="#"> Lorem ipsum dolor sit amet.</a>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed
+              auctor elit.
+            </p>
+            <a href="#">Brand new shoes on the way!</a>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed
+              auctor elit.
+            </p>
+            <a href="#">Summer sales are coming!</a>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed
+              auctor elit.
+            </p>
           </div>
 
-          <div className="col-sm-3">
-            <ul>
-              <li className="lien">
-                <a href="#">Facebook</a>
-              </li>
-              <li className="lien">
-                <a href="#">Twitter</a>
-              </li>
-            </ul>
+          <div className="col-md-3 support">
+            <h3>Support</h3>
+            <div class="support-grids">
+              <div className="support-left">
+                <ul>
+                  <li>
+                    <a href="#">Terms & Conditions</a>
+                  </li>
+                  <li>
+                    <a href="#">FAQ</a>
+                  </li>
+                  <li>
+                    <a href="#">Payment</a>
+                  </li>
+                  <li>
+                    <a href="#">Refunds</a>
+                  </li>
+                  <li>
+                    <a href="#">Track Order</a>
+                  </li>
+                  <li>
+                    <a href="#">Services</a>
+                  </li>
+                  <li>
+                    <a href="#">Privacy & Security</a>
+                  </li>
+                  <li>
+                    <a href="#">Careers</a>
+                  </li>
+                  <li>
+                    <a href="#">Press</a>
+                  </li>
+                  <li>
+                    <a href="#">Corporate Information</a>
+                  </li>
+                </ul>
+              </div>
+              {/* <div className="support-left support-right">
+                <ul>
+                  <li>
+                    <a href="#">Sizing</a>
+                  </li>
+                  <li>
+                    <a href="#">Ordering</a>
+                  </li>
+                  <li>
+                    <a href="#">Shipping</a>
+                  </li>
+                  <li>
+                    <a href="#">Return Policy</a>
+                  </li>
+                  <li>
+                    <a href="#">Affiliates</a>
+                  </li>
+                  <li>
+                    <a href="#">Find A Store </a>
+                  </li>
+                  <li>
+                    <a href="#">Site Map</a>
+                  </li>
+                  <li>
+                    <a href="#">Sign Up & Save</a>
+                  </li>
+                </ul>
+              </div> */}
+              <div className="clearfix"> </div>
+            </div>
           </div>
-
-          <div className="col-sm-3">
-            <h4 className="text-center">CONTACT US</h4>
-            <center>
+          <div className="col-md-3 contact">
+            <h3>Contact us</h3>
+            <form>
               <input
                 type="text"
-                name="email1"
-                id="input1"
-                placeholder="Your Email"
-                className="form-control"
-                style={{
-                  backgroundColor: "transparent",
-                  borderRadius: "0px",
-                  marginBottom: "10px",
-                }}
+                value="your e-mail..."
+                onfocus="this.value = '';"
+                onblur="if (this.value == '') {this.value = 'your e-mail...';}"
+                required=""
               />
-              {/* <input
-                  type="text"
-                  name="email1"
-                  id="input2"
-                  placeholder="Antre adres elektwonik ou"
-                  className="form-control"
-                  style={{
-                    backgroundColor: "transparent",
-                    borderRadius: "0px",
-                    marginBottom: "10px",
-                  }}
-                /> */}
               <textarea
-                name="email1"
-                id="input2"
-                placeholder="Antre adres elektwonik ou"
-                className="form-control"
-                style={{
-                  backgroundColor: "transparent",
-                  borderRadius: "0px",
-                  marginBottom: "10px",
-                }}
-              ></textarea>
-
+                value="your text...:"
+                onfocus="if(this.value == 'your text...') this.value='';"
+                onblur="if(this.value == '') this.value='your text...';"
+              >
+                your text...
+              </textarea>
               <input
                 type="submit"
-                name="enskri"
-                value="Enskri"
-                style={{
-                  backgroundColor: "#ff674f",
-                  fontWeight: "bold",
-                  color: "#fff",
-                  borderRadius: "0px",
-                  border: "none",
-                  padding: "10px 20px 10px 20px",
-                }}
+                // onClick={handleMessage}
+                value="Send MESSAGE"
               />
-            </center>
+            </form>
+          </div>
+          <div className="clearfix"> </div>
+          <div className="copyright">
+            <p>
+              Copyright &copy;{" "}
+              <strong>
+                <span>RKENEITHSHOP</span>
+              </strong>
+              . All Rights Reserved
+            </p>
           </div>
         </div>
-      </div>
-
-      <div
-        className="container-fluid"
-        style={{
-          backgroundColor: "#2a2d34",
-          height: "65px",
-          borderTop: " 0.5px solid #fff",
-        }}
-      >
-        <center>
-          <p style={{ lineHeight: "65px", color: "#fff" }}>
-            © Copyright Konnen Dwa ou 2018
-          </p>
-        </center>
       </div>
     </div>
   );

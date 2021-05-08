@@ -11,7 +11,7 @@ function App() {
       <Menu />
       <Banner />
       <NewProducts />
-      {/* <Footer /> */}
+      <Footer />
     </BrowserRouter>
   );
 }
