@@ -2,65 +2,20 @@ import React, { useEffect } from "react";
 import $ from "jquery";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ScriptTag from "react-script-tag";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import "../css/bootstrap.css";
 import "../css/nav.css";
 import "../css/style.css";
 import imageMenu from "../images/menu.png";
 import imgicon from "../images/Male User_32px.png";
+import Shopping_Cart_32px from "../images/Shopping_Cart_32px.png";
 
 const handelMenu = () => {
   $(" ul.nav").slideToggle("slow", function () {});
 };
 
 const Menu = () => {
-  <ScriptTag
-    isHydrating={true}
-    type="text/javascript"
-    src="../js/scripts.js"
-  />;
-  <ScriptTag
-    isHydrating={true}
-    type="text/javascript"
-    src="../js/responsiveslides.min.js"
-  />;
-  <ScriptTag
-    isHydrating={true}
-    type="text/javascript"
-    src="../js/move-top.js"
-  />;
-  <ScriptTag
-    isHydrating={true}
-    type="text/javascript"
-    src="../js/modernizr.custom.min.js"
-  />;
-  <ScriptTag
-    isHydrating={true}
-    type="text/javascript"
-    src="../js/jquery.min.js"
-  />;
-  <ScriptTag
-    isHydrating={true}
-    type="text/javascript"
-    src="../js/jquery.magnific-popup.js"
-  />;
-  <ScriptTag
-    isHydrating={true}
-    type="text/javascript"
-    src="../js/jquery.etalage.min.js"
-  />;
-  <ScriptTag
-    isHydrating={true}
-    type="text/javascript"
-    src="../js/jquery.easydropdown.js"
-  />;
-  <ScriptTag
-    isHydrating={true}
-    type="text/javascript"
-    src="../js/easyResponsiveTabs.js"
-  />;
-  <ScriptTag isHydrating={true} type="text/javascript" src="../js/easing.js" />;
   return (
     <div>
       <div className="header">
@@ -73,14 +28,18 @@ const Menu = () => {
             </div>
             <div className="header-right">
               <ul>
-                {/* <li className="phone">+371 282 20 760</li>
-                <li className="mail">
-                  <a href="mailto:example@mail.com">eony321v@gmail.com</a>
-                </li> */}
                 <li className="checkout">
                   <div className="iconAccount">
-                    <img src={imgicon} />
+                    <Link to="/login">
+                      <img src={imgicon} alt="" />
+                    </Link>
                   </div>
+                </li>
+
+                <li>
+                  <Link>
+                    <img src={Shopping_Cart_32px} alt="" />
+                  </Link>
                 </li>
               </ul>
             </div>

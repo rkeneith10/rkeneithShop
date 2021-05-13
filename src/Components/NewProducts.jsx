@@ -127,7 +127,11 @@ const NewProducts = () => {
     <div>
       <div className="container">
         <div className="col-md-12">
-          <h3 style={{ textAlign: "center", color: "gray" }}>NEW PRODUCTS</h3>
+          <h3
+            style={{ textAlign: "center", color: "gray", fontWeight: "bold" }}
+          >
+            Shop by Category
+          </h3>
           <p
             style={{ textAlign: "center", color: "gray", marginBottom: "30px" }}
           >
