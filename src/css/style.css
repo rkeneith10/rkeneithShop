@@ -11,6 +11,16 @@ body {
   background: #fff;
   font-size: 100%;
 }
+.detailsparagraph {
+  color: #7e7f84;
+  font-size: 13px;
+}
+.btn-keneith {
+  background-color: #f45a40;
+  color: #fff;
+  border-radius: 0px;
+  border: none;
+}
 /*-- header --*/
 .header-top {
   padding: 2em 0;
@@ -1396,12 +1406,7 @@ h4.sold-out a {
   color: #7e7f84;
   font-size: 14px;
 }
-.single-left-info p {
-  color: #f45a40;
-  font-family: "Roboto Condensed", sans-serif;
-  margin: 1em 0;
-  font-size: 24px;
-}
+
 .select-size p {
   font-size: 14px;
   margin: 0;
@@ -1579,6 +1584,11 @@ h4.sold-out a {
 @media (max-width: 768px) {
   ul.navig li.plan:hover ul.sub-nav {
     display: none;
+  }
+  .detailsparagraph {
+    color: #7e7f84;
+    font-size: 13px;
+    margin: 0;
   }
 
   .head {

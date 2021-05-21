@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import $ from "jquery";
 import "bootstrap/dist/css/bootstrap.min.css";
-import ScriptTag from "react-script-tag";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import "../css/bootstrap.css";
 import "../css/nav.css";
@@ -53,79 +52,16 @@ const Menu = () => {
             <ul className="nav">
               <li className="dropdown1">
                 <Link to="/">HOME</Link>
-                {/* <ul className="dropdown2">
-                  <li>
-                    <a href="single.html">lorem</a>
-                  </li>
-                  <li>
-                    <a href="single.html">dorem sia</a>
-                  </li>
-                  <li>
-                    <a href="single.html">erik</a>
-                  </li>
-                  <li>
-                    <a href="single.html">ipsum padamans</a>
-                  </li>
-                  <li>
-                    <a href="single.html">behance</a>
-                  </li>
-                </ul> */}
               </li>
               <li>
                 <Link to="/">MEN</Link>
-                {/* <ul className="dropdown2">
-                  <li>
-                    <a href="men.html">Clothing</a>
-                  </li>
-                  <li>
-                    <a href="men.html">Footwear</a>
-                  </li>
-                  <li>
-                    <a href="men.html">Watches</a>
-                  </li>
-                  <li>
-                    <a href="men.html">Accessories</a>
-                  </li>
-                </ul> */}
               </li>
               <li>
                 <Link to="/">WOMEN</Link>
-                {/* <ul className="dropdown2">
-                  <li>
-                    <a href="women.html">Ethnic Wear</a>
-                  </li>
-                  <li>
-                    <a href="women.html">Western Wear</a>
-                  </li>
-                  <li>
-                    <a href="women.html">All Jewellery</a>
-                  </li>
-                  <li>
-                    <a href="women.html">Beauty & Wellness</a>
-                  </li>
-                </ul> */}
               </li>
               <li>
                 <Link to="/">KIDS</Link>
-                {/* <ul className="dropdown2">
-                  <li>
-                    <a href="women.html">Clothing</a>
-                  </li>
-                  <li>
-                    <a href="women.html">Footwear</a>
-                  </li>
-                  <li>
-                    <a href="women.html">Accessories</a>
-                  </li>
-                </ul> */}
               </li>
-
-              {/* <li>
-                <a href="about.html">ABOUT US</a>
-              </li>
-              <li>
-                <a href="404.html">SUPPORT</a>
-              </li> */}
             </ul>
           </div>
           <div className="search">
