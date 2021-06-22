@@ -48,28 +48,28 @@ const DetailProducts = (props) => {
 
           {/* kjsjdsk */}
 
-          <div class="related" style={{ marginTop: "22px" }}>
+          <div className="related" style={{ marginTop: "22px" }}>
             <p
               style={{ color: "#f45a40", fontWeight: "bold", fontSize: "20px" }}
             >
               RELATED PRODUCTS
             </p>
-            <div class="related-grids">
+            <div className="related-grids">
               {relatedProduct.splice(0, 5).map((r, index) => (
-                <div class="related-grid" key={index}>
-                  <div class="col-md-9 related-left">
-                    <div class="col-md-3 related-left-left">
+                <div className="related-grid" key={index}>
+                  <div className="col-md-9 related-left">
+                    <div className="col-md-3 related-left-left">
                       <img src={r.url} alt="" />
                     </div>
-                    <div class="col-md-9 related-left-right">
+                    <div className="col-md-9 related-left-right">
                       <p style={{ color: "#f45a40", fontSize: "20px" }}>
                         {r.title}
                       </p>
                       <p>{r.description}</p>
                     </div>
-                    <div class="clearfix"> </div>
+                    <div className="clearfix"> </div>
                   </div>
-                  <div class="col-md-3 related-right">
+                  <div className="col-md-3 related-right">
                     <p style={{ fontSize: "13px", color: "#7e7f84" }}>
                       Price:
                       <span style={{ fontSize: "19px", color: "#f45a40" }}>
