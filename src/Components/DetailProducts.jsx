@@ -48,12 +48,14 @@ const DetailProducts = (props) => {
                     </span>
                   </p>
 
-                  <div className="col-md-3">
-                    <div className="d-flex justify-content-between">
-                      <button className="btn btn-keneith">Add to cart</button>
-                      <button className="btn btn-keneith">Buy Now</button>
-                    </div>
-                  </div>
+                  <button
+                    className="btn btn-addToCard"
+                    style={{ marginRight: "20px" }}
+                  >
+                    Add to cart
+                  </button>
+
+                  <button className="btn btn-keneith">Buy Now</button>
                 </div>
               </div>
             </div>

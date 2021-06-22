@@ -21,6 +21,23 @@ body {
   border-radius: 0px;
   border: none;
 }
+
+.btn-addToCard {
+  background-color: #fff;
+  color: #f45a40;
+  border-radius: 0px;
+  border: 1px solid #f45a40;
+}
+.btn-addToCard:hover {
+  color: #f45a40;
+}
+
+.checkoutCard {
+  width: 100%;
+  height: auto;
+  background-color: white;
+  border: "1px solid #f0f0f0";
+}
 /*-- header --*/
 .header-top {
   padding: 2em 0;
