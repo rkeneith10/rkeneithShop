@@ -27,7 +27,7 @@ function App(props) {
         <Route path="/login" component={LoginPage} />
         <Route path="/signup" component={SignupPage} />
         <Route path="/product/:id" component={DetailProducts} />
-        <Route path="/checkout" component={CheckOut} />
+        <Route path="/checkout/:id" component={CheckOut} />
       </Switch>
     </div>
   );

@@ -55,7 +55,13 @@ const DetailProducts = (props) => {
                     Add to cart
                   </button>
 
-                  <button className="btn btn-keneith">Buy Now</button>
+                  <Link
+                    to={`/checkout/${product.id}`}
+                    style={{ textDecoration: "none" }}
+                  >
+                    {" "}
+                    <button className="btn btn-keneith">Buy Now</button>
+                  </Link>
                 </div>
               </div>
             </div>

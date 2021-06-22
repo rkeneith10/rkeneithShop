@@ -37,6 +37,20 @@ body {
   height: auto;
   background-color: white;
   border: "1px solid #f0f0f0";
+  padding: 10px;
+}
+.checkoutCard1 {
+  width: 100%;
+  height: 380px;
+  background-color: white;
+  border: "1px solid #f0f0f0";
+  padding: 10px;
+}
+.btm {
+  margin-bottom: 10px;
+}
+.btm input {
+  border-radius: 0px;
 }
 /*-- header --*/
 .header-top {
@@ -1610,6 +1624,9 @@ h4.sold-out a {
   .relatedPhoto {
     width: 200px;
     height: 90px;
+  }
+  .checkoutCard1 {
+    height: 600px;
   }
 
   .head {
