@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import products from "../data/products";
 import { useParams } from "react-router-dom";
 import MC_Button from "../images/MC_button.png";
@@ -14,6 +14,9 @@ function CheckOut() {
   const theclick = () => {
     console.log("The Click");
   };
+
+  const [quantity, setQuantity] = useState("");
+
   return (
     <div>
       <div className="single">
@@ -32,10 +35,32 @@ function CheckOut() {
                   </div>
                   <div className="col-md-8">
                     <h5>{product.title}</h5>
+                    <p>
+                      Quantity:{" "}
+                      <select
+                        value={quantity}
+                        onChange={(e) => {
+                          const selectedNumber = e.target.value;
+                          setQuantity(selectedNumber);
+                        }}
+                      >
+                        <option value="1" selected>
+                          1
+                        </option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                      </select>
+                    </p>
+
                     <p style={{ fontSize: "13px", color: "#7e7f84" }}>
-                      Price:
-                      <span style={{ fontSize: "19px", color: "#f45a40" }}>
-                        ${product.id * 100}
+                      Price:$
+                      <span style={{ fontSize: "19px", color: "#" }}>
+                        {quantity !== 1
+                          ? product.id * quantity * 100
+                          : product.id * 100}
                       </span>
                     </p>
                   </div>
@@ -45,6 +70,7 @@ function CheckOut() {
 
               <div className="checkoutCard1">
                 <h3>Ship to:</h3>
+
                 <hr style={{ width: "90%", border: "1px solid #f0f0f0" }} />
 
                 <form>
