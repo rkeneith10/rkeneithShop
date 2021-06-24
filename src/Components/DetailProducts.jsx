@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import products from "../data/products";
 import Footer from "./Footer";
 import { useParams } from "react-router-dom";
@@ -12,6 +12,13 @@ const DetailProducts = (props) => {
   const { id } = useParams();
   const product = products.find((x) => x.id === parseInt(id));
   const relatedProduct = products.filter((p) => p.id !== parseInt(id));
+
+  const [quantity, setQuantity] = useState("");
+
+  const handleChange = (e) => {
+    const selectedNumber = e.target.value;
+    setQuantity(selectedNumber);
+  };
 
   return (
     <div>
@@ -48,6 +55,20 @@ const DetailProducts = (props) => {
                     </span>
                   </p>
 
+                  <p>
+                    Quantity:{" "}
+                    <select value={quantity} onChange={handleChange}>
+                      <option value="1" selected>
+                        1
+                      </option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                    </select>
+                  </p>
+
                   <button
                     className="btn btn-addToCard"
                     style={{ marginRight: "20px" }}
@@ -56,10 +77,13 @@ const DetailProducts = (props) => {
                   </button>
 
                   <Link
-                    to={`/checkout/${product.id}`}
-                    style={{ textDecoration: "none" }}
+                    to={{
+                      pathname: `/checkout/${product.id}`,
+                      state: {
+                        priceTotale: product.id * quantity * 100,
+                      },
+                    }}
                   >
-                    {" "}
                     <button className="btn btn-keneith">Buy Now</button>
                   </Link>
                 </div>

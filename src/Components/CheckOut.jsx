@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import products from "../data/products";
 import { useParams } from "react-router-dom";
 import MC_Button from "../images/MC_button.png";
@@ -8,14 +8,14 @@ import "../css/bootstrap.css";
 import "../css/nav.css";
 import "../css/style.css";
 
-function CheckOut() {
+function CheckOut(props) {
   const { id } = useParams();
   const product = products.find((x) => x.id === parseInt(id));
   const theclick = () => {
     console.log("The Click");
   };
 
-  const [quantity, setQuantity] = useState("");
+  const { priceTotale } = props.location.state;
 
   return (
     <div>
@@ -34,33 +34,19 @@ function CheckOut() {
                     />
                   </div>
                   <div className="col-md-8">
-                    <h5>{product.title}</h5>
-                    <p>
-                      Quantity:{" "}
-                      <select
-                        value={quantity}
-                        onChange={(e) => {
-                          const selectedNumber = e.target.value;
-                          setQuantity(selectedNumber);
+                    <h4>{product.title}</h4>
+                    <p>{product.description}</p>
+
+                    <p style={{ fontSize: "15px", color: "#7e7f84" }}>
+                      Price:
+                      <span
+                        style={{
+                          fontSize: "15px",
+                          color: "black",
+                          fontWeight: "bold",
                         }}
                       >
-                        <option value="1" selected>
-                          1
-                        </option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                      </select>
-                    </p>
-
-                    <p style={{ fontSize: "13px", color: "#7e7f84" }}>
-                      Price:$
-                      <span style={{ fontSize: "19px", color: "#" }}>
-                        {quantity !== 1
-                          ? product.id * quantity * 100
-                          : product.id * 100}
+                        ${!priceTotale ? product.id * 100 : priceTotale}
                       </span>
                     </p>
                   </div>
