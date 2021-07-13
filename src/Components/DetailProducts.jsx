@@ -19,18 +19,21 @@ const DetailProducts = (props) => {
 
   const [singleproduct, setSingleProduct] = useState([]);
   const [related, setRelated] = useState([]);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     getOneProduct();
     relatedproducts();
   }, []);
 
   const getOneProduct = () => {
+    setLoading(true);
     axios
       .get(`https://rkeneithshopbackend.herokuapp.com/api/singleproduct/${id}`)
       .then((response) => {
         const product = response.data.single;
         setSingleProduct(product);
       });
+    setLoading(false);
   };
 
   const relatedproducts = () => {
@@ -52,8 +55,8 @@ const DetailProducts = (props) => {
     setQuantity(selectedNumber);
   };
 
-  return (
-    <div>
+  const pppp = () => {
+    return (
       <div className="single">
         <div className="container">
           <div className="row">
@@ -159,6 +162,17 @@ const DetailProducts = (props) => {
           </div> */}
         </div>
       </div>
+    );
+  };
+
+  const spinner = () => {
+    <div className="spinner-border spinner-border-sm"></div>;
+  };
+
+  return (
+    <div>
+      {loading ? spinner : pppp}
+
       <Footer />
     </div>
   );
