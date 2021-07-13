@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import products from "../data/products";
+import React, { useState, useEffect } from "react";
+
 import Footer from "./Footer";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -7,13 +7,45 @@ import { Link } from "react-router-dom";
 import "../css/bootstrap.css";
 import "../css/nav.css";
 import "../css/style.css";
+import axios from "axios";
 
 const DetailProducts = (props) => {
   const { id } = useParams();
-  const product = products.find((x) => x.id === parseInt(id));
-  const relatedProduct = products.filter((p) => p.id !== parseInt(id));
+  // const product = products.find((x) => x.id === parseInt(id));
+  // const relatedProduct = products.filter((p) => p.id !== parseInt(id));
 
   const [quantity, setQuantity] = useState("");
+  const [cart, setCart] = useState([]);
+
+  const [singleproduct, setSingleProduct] = useState([]);
+  const [related, setRelated] = useState([]);
+  useEffect(() => {
+    getOneProduct();
+    relatedproducts();
+  }, []);
+
+  const getOneProduct = () => {
+    axios
+      .get(`https://rkeneithshopbackend.herokuapp.com/api/singleproduct/${id}`)
+      .then((response) => {
+        const product = response.data.single;
+        setSingleProduct(product);
+      });
+  };
+
+  const relatedproducts = () => {
+    axios
+      .get(`https://rkeneithshopbackend.herokuapp.com/api/relatedproduct/${id}`)
+      .then((response) => {
+        const relatedproduct = response.data.relatedProduct;
+        setRelated(relatedproduct);
+      });
+  };
+
+  const addToCart = (product) => {
+    setCart([...cart, product]);
+    console.table(cart);
+  };
 
   const handleChange = (e) => {
     const selectedNumber = e.target.value;
@@ -28,30 +60,23 @@ const DetailProducts = (props) => {
             <div className="col-md-9 ">
               <div className="single-left-left">
                 <img
-                  src={product.url}
+                  src={singleproduct.imageUrl}
                   alt=""
-                  style={{ width: "250px", height: "300px" }}
+                  style={{ width: "200px", height: "230px" }}
                 />
                 <div className="clearfix"></div>
               </div>
 
               <div className="single-left-right">
                 <div className="single-left-info" style={{ marginTop: "30px" }}>
-                  <h3>{product.title}</h3>
+                  <h3>{singleproduct.title}</h3>
                   <p className="detailsparagraph">
-                    {product.description}
-                    {product.description}
-                    {product.description}
-                    {product.description}
-                    {product.description}
-                    {product.description}
-                    {product.description}
-                    {product.description}
+                    {singleproduct.description}
                   </p>
                   <p style={{ fontSize: "13px", color: "#7e7f84" }}>
                     Price:
                     <span style={{ fontSize: "19px", color: "#f45a40" }}>
-                      ${product.id * 100}
+                      ${singleproduct.price}
                     </span>
                   </p>
 
@@ -72,15 +97,16 @@ const DetailProducts = (props) => {
                   <button
                     className="btn btn-addToCard"
                     style={{ marginRight: "20px" }}
+                    // onClick={() => addToCart(product)}
                   >
                     Add to cart
                   </button>
 
                   <Link
                     to={{
-                      pathname: `/checkout/${product.id}`,
+                      //pathname: `/checkout/${product.id}`,
                       state: {
-                        priceTotale: product.id * quantity * 100,
+                        priceTotale: quantity * 100,
                       },
                     }}
                   >
@@ -94,7 +120,7 @@ const DetailProducts = (props) => {
           {/* <hr style={{ width: "80%", border: "1 solid #7e7f84" }} /> */}
 
           {/* kjsjdsk */}
-
+          {/* 
           <div className="related" style={{ marginTop: "30px" }}>
             <p
               style={{ color: "#f45a40", fontWeight: "bold", fontSize: "20px" }}
@@ -102,30 +128,24 @@ const DetailProducts = (props) => {
               RELATED PRODUCTS
             </p>
             <div className="related-grids">
-              {relatedProduct.splice(0, 5).map((r, index) => (
+              {related.splice(0, 5).map((r, index) => (
                 <div className="related-grid" key={index}>
                   <div className="col-md-9 ">
-                    <Link to={`/product/${r.id}`}>
+                    <Link to={`/product/${r._id}`}>
                       <div className="col-md-3 related-left-left">
-                        <img src={r.url} alt="" />
+                        <img src={r.imageUrl} alt="" />
                       </div>
                     </Link>
                     <div className="col-md-9 related-left-right">
                       <p style={{ color: "#f45a40", fontSize: "20px" }}>
                         {r.title}
                       </p>
-                      <p>
-                        {r.description}
-                        {r.description}
-                        {r.description}
-                        {r.description}
-                        {r.description}
-                      </p>
+                      <p>{r.description}</p>
 
                       <p style={{ fontSize: "13px", color: "#7e7f84" }}>
                         Price:
                         <span style={{ fontSize: "19px", color: "#f45a40" }}>
-                          ${r.id * 100}
+                          ${r.price}
                         </span>
                       </p>
                     </div>
@@ -136,7 +156,7 @@ const DetailProducts = (props) => {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <Footer />

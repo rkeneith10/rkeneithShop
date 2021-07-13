@@ -1,14 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import TemplateProduct from "./TemplateProduct";
-import products from "../data/products";
+// import products from "../data/products";
+import axios from "axios";
 
 import "../css/bootstrap.css";
 import "../css/nav.css";
 import "../css/style.css";
 
 function Banner() {
+  const [products, setproducts] = useState([]);
+  const url = "https://rkeneithshopbackend.herokuapp.com/api/allproducts";
+
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    getAllProducts();
+    tchek();
+  }, []);
+  const tchek = () => {
+    if (token) {
+      console.log("Token in the browser");
+    }
+  };
+
+  const getAllProducts = () => {
+    axios.get(url).then((response) => {
+      const allProducts = response.data.all;
+      setproducts(allProducts);
+    });
+  };
   return (
     <div>
       <div className="banner">

@@ -1,9 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/bootstrap.css";
 import "../css/loginCSS.css";
+import axios from "axios";
+import validator from "validator";
+import { useHistory } from "react-router-dom";
 
 function LoginPage() {
+  const history = useHistory();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLogin, setIsLogin] = useState(false);
+  const [showMessge, setShowMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [disable, setDisable] = useState(false);
+
+  const login = (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setDisable(true);
+    if (email === "" || password === "") {
+      setShowMessage("Non");
+      setIsLoading(false);
+      setDisable(false);
+    } else if (!validator.isEmail(email)) {
+      setShowMessage("Email Invalid");
+      setIsLoading(false);
+      setDisable(false);
+    } else {
+      axios
+        .post("https://rkeneithshopbackend.herokuapp.com/api/login", {
+          email: email,
+          password: password,
+        })
+        .then((response) => {
+          // console.log(response.status);
+
+          if (response.data.auth) {
+            setIsLoading(false);
+            setDisable(false);
+            localStorage.setItem("token", response.data.token);
+            history.push("/");
+          } else if (!response.data.auth) {
+            setShowMessage(response.data.msg);
+            setIsLoading(false);
+            setDisable(false);
+          }
+        });
+    }
+  };
   return (
     <div>
       <div className="container">
@@ -17,6 +62,12 @@ function LoginPage() {
                 <div className="logo mb-3">
                   <div className="col-md-12 text-center">
                     <h1>RKENEITHSHOP</h1>
+
+                    {showMessge && (
+                      <div className="alert alert-danger" role="alert">
+                        {showMessge}
+                      </div>
+                    )}
                   </div>
                 </div>
                 <form>
@@ -30,6 +81,9 @@ function LoginPage() {
                       id="email"
                       aria-describedby="emailHelp"
                       placeholder="Enter email"
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                      }}
                     />
                   </div>
                   <div className="form-group">
@@ -42,19 +96,26 @@ function LoginPage() {
                       className="form-control  "
                       aria-describedby="emailHelp"
                       placeholder="Enter Password"
+                      onChange={(e) => {
+                        setPassword(e.target.value);
+                      }}
                     />
                   </div>
-                  {/* <div className="form-group">
-                    <p className="text-center">
-                      By signing up you accept our <a href="#">Terms Of Use</a>
-                    </p>
-                  </div> */}
+
                   <div className="col-md-12 text-center ">
                     <button
                       type="submit"
+                      disabled={disable}
+                      onClick={login}
                       className=" btn btn-block mybtn btn-primary tx-tfm"
                     >
                       Login
+                      {isLoading && (
+                        <span
+                          style={{ marginLeft: "10px" }}
+                          className="spinner-border spinner-border-sm"
+                        ></span>
+                      )}
                     </button>
                   </div>
 

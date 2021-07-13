@@ -1,7 +1,12 @@
 import React from "react";
 import $ from "jquery";
+import { useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
+import { MDBIcon } from "react-icons/fa";
+import user from "../images/User_20px.png";
+import logout from "../images/Shutdown_20px.png";
+import order from "../images/Box_20px.png";
 
 import "../css/bootstrap.css";
 import "../css/nav.css";
@@ -15,6 +20,11 @@ const handelMenu = () => {
 };
 
 const Menu = () => {
+  const history = useHistory();
+  const logoutUser = () => {
+    localStorage.removeItem("token");
+    history.push("/login");
+  };
   return (
     <div>
       <div className="header">
@@ -29,9 +39,43 @@ const Menu = () => {
               <ul>
                 <li className="checkout">
                   <div className="iconAccount">
-                    <Link to="/login">
-                      <img src={imgicon} alt="" />
-                    </Link>
+                    {!localStorage.getItem("token") ? (
+                      <Link to="/login">
+                        <img src={imgicon} alt="" />
+                      </Link>
+                    ) : (
+                      <div className="dropdown">
+                        <Link
+                          className=""
+                          href="#"
+                          id="userDropdown"
+                          role="button"
+                          data-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                        >
+                          <img src={imgicon} alt="" />
+                          <span style={{ marginLeft: "4px" }}>rkenithshop</span>
+                        </Link>
+                        <div
+                          style={{ marginTop: "10px" }}
+                          className="dropdown-menu dropdown-menu-right"
+                          aria-labelledby="userDropdown"
+                        >
+                          <Link className="dropdown-item" to="profile.html">
+                            <img src={user} alt="" /> Profile
+                          </Link>
+
+                          <Link className="dropdown-item" to="profile.html">
+                            <img src={order} alt="" /> Orders
+                          </Link>
+
+                          <Link class="dropdown-item" onClick={logoutUser}>
+                            <img src={logout} alt="" /> Logout
+                          </Link>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </li>
 

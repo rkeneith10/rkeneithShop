@@ -1,20 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../css/bootstrap.css";
 import "../css/nav.css";
 import "../css/style.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function TemplateProduct({ product }) {
   return (
     <div>
-      <Link to={`/product/${product.id}`} style={{ textDecoration: "none" }}>
+      <Link to={`/product/${product._id}`} style={{ textDecoration: "none" }}>
         <div className="card" style={{ borderRadius: "0px" }}>
-          <img className="card-img-top" src={product.url} alt="" />
+          <img
+            className="card-img-top"
+            style={{ height: "200px" }}
+            src={product.imageUrl}
+            alt=""
+          />
           <div className="card-body">
             <p className="">{product.title}</p>
-            <p className="card-text">{product.description}</p>
+            {/* <p className="card-text">{product.description}</p> */}
             <p style={{ color: "#f45a40", fontSize: "16px," }}>
-              $ {product.id * 100}
+              $ {product.price}
             </p>
           </div>
         </div>
