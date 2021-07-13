@@ -55,8 +55,8 @@ const DetailProducts = (props) => {
     setQuantity(selectedNumber);
   };
 
-  const pppp = () => {
-    return (
+  return (
+    <div>
       <div className="single">
         <div className="container">
           <div className="row">
@@ -162,17 +162,6 @@ const DetailProducts = (props) => {
           </div> */}
         </div>
       </div>
-    );
-  };
-
-  const spinner = () => {
-    <div className="spinner-border spinner-border-sm"></div>;
-  };
-
-  return (
-    <div>
-      {loading ? spinner : pppp}
-
       <Footer />
     </div>
   );
