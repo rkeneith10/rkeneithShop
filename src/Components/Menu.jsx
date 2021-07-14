@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import $ from "jquery";
 import { useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -14,17 +14,31 @@ import "../css/style.css";
 import imageMenu from "../images/menu.png";
 import imgicon from "../images/Male User_32px.png";
 import Shopping_Cart_32px from "../images/Shopping_Cart_32px.png";
+import axios from "axios";
 
 const handelMenu = () => {
   $(" ul.nav").slideToggle("slow", function () {});
 };
 
 const Menu = () => {
+  const [profil, setProfil] = useState();
   const history = useHistory();
   const logoutUser = () => {
     localStorage.removeItem("token");
     history.push("/login");
   };
+
+  const infoprofile = () => {
+    const url = "https://rkeneithshopbackend.herokuapp.com/api/profileInfo";
+    axios.get(url).then((response) => {
+      setProfil(response.data.profileinfo);
+      console.log(response.data.profileinfo);
+    });
+  };
+
+  useEffect(() => {
+    infoprofile();
+  }, []);
   return (
     <div>
       <div className="header">
@@ -55,7 +69,7 @@ const Menu = () => {
                           aria-expanded="false"
                         >
                           <img src={imgicon} alt="" />
-                          <span style={{ marginLeft: "4px" }}>rkenithshop</span>
+                          <span style={{ marginLeft: "4px" }}>rkeneith</span>
                         </Link>
                         <div
                           style={{ marginTop: "10px" }}

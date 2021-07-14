@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Footer from "./Footer";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import ReactLoading from "react-loading";
 
 import "../css/bootstrap.css";
 import "../css/nav.css";
@@ -26,14 +27,13 @@ const DetailProducts = (props) => {
   }, []);
 
   const getOneProduct = () => {
-    setLoading(true);
     axios
       .get(`https://rkeneithshopbackend.herokuapp.com/api/singleproduct/${id}`)
       .then((response) => {
         const product = response.data.single;
         setSingleProduct(product);
+        setLoading(true);
       });
-    setLoading(false);
   };
 
   const relatedproducts = () => {
@@ -57,73 +57,81 @@ const DetailProducts = (props) => {
 
   return (
     <div>
-      <div className="single">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-9 ">
-              <div className="single-left-left">
-                <img
-                  src={singleproduct.imageUrl}
-                  alt=""
-                  style={{ width: "200px", height: "230px" }}
-                />
-                <div className="clearfix"></div>
-              </div>
+      {!loading ? (
+        <div style={{ margin: "0 auto", marginRight: "auto", width: "200px" }}>
+          <ReactLoading type={"spin"} color={"gray"} height={150} width={150} />
+        </div>
+      ) : (
+        <div className="single">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-9 ">
+                <div className="single-left-left">
+                  <img
+                    src={singleproduct.imageUrl}
+                    alt=""
+                    style={{ width: "200px", height: "230px" }}
+                  />
+                  <div className="clearfix"></div>
+                </div>
 
-              <div className="single-left-right">
-                <div className="single-left-info" style={{ marginTop: "30px" }}>
-                  <h3>{singleproduct.title}</h3>
-                  <p className="detailsparagraph">
-                    {singleproduct.description}
-                  </p>
-                  <p style={{ fontSize: "13px", color: "#7e7f84" }}>
-                    Price:
-                    <span style={{ fontSize: "19px", color: "#f45a40" }}>
-                      ${singleproduct.price}
-                    </span>
-                  </p>
-
-                  <p>
-                    Quantity:{" "}
-                    <select value={quantity} onChange={handleChange}>
-                      <option value="1" selected>
-                        1
-                      </option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                      <option value="6">6</option>
-                    </select>
-                  </p>
-
-                  <button
-                    className="btn btn-addToCard"
-                    style={{ marginRight: "20px" }}
-                    // onClick={() => addToCart(product)}
+                <div className="single-left-right">
+                  <div
+                    className="single-left-info"
+                    style={{ marginTop: "30px" }}
                   >
-                    Add to cart
-                  </button>
+                    <h3>{singleproduct.title}</h3>
+                    <p className="detailsparagraph">
+                      {singleproduct.description}
+                    </p>
+                    <p style={{ fontSize: "13px", color: "#7e7f84" }}>
+                      Price:
+                      <span style={{ fontSize: "19px", color: "#f45a40" }}>
+                        ${singleproduct.price}
+                      </span>
+                    </p>
 
-                  <Link
-                    to={{
-                      //pathname: `/checkout/${product.id}`,
-                      state: {
-                        priceTotale: quantity * 100,
-                      },
-                    }}
-                  >
-                    <button className="btn btn-keneith">Buy Now</button>
-                  </Link>
+                    <p>
+                      Quantity:{" "}
+                      <select value={quantity} onChange={handleChange}>
+                        <option value="1" selected>
+                          1
+                        </option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                      </select>
+                    </p>
+
+                    <button
+                      className="btn btn-addToCard"
+                      style={{ marginRight: "20px" }}
+                      // onClick={() => addToCart(product)}
+                    >
+                      Add to cart
+                    </button>
+
+                    <Link
+                      to={{
+                        //pathname: `/checkout/${product.id}`,
+                        state: {
+                          priceTotale: quantity * 100,
+                        },
+                      }}
+                    >
+                      <button className="btn btn-keneith">Buy Now</button>
+                    </Link>
+                  </div>
                 </div>
               </div>
+              <div className="col-md-3"></div>
             </div>
-            <div className="col-md-3"></div>
-          </div>
-          {/* <hr style={{ width: "80%", border: "1 solid #7e7f84" }} /> */}
+            {/* <hr style={{ width: "80%", border: "1 solid #7e7f84" }} /> */}
 
-          {/* kjsjdsk */}
-          {/* 
+            {/* kjsjdsk */}
+            {/* 
           <div className="related" style={{ marginTop: "30px" }}>
             <p
               style={{ color: "#f45a40", fontWeight: "bold", fontSize: "20px" }}
@@ -160,8 +168,10 @@ const DetailProducts = (props) => {
               ))}
             </div>
           </div> */}
+          </div>
         </div>
-      </div>
+      )}
+
       <Footer />
     </div>
   );

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import TemplateProduct from "./TemplateProduct";
-// import products from "../data/products";
+import ReactLoading from "react-loading";
 import axios from "axios";
 
 import "../css/bootstrap.css";
@@ -11,6 +11,8 @@ import "../css/style.css";
 
 function Banner() {
   const [products, setproducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   const url = "https://rkeneithshopbackend.herokuapp.com/api/allproducts";
 
   const token = localStorage.getItem("token");
@@ -29,6 +31,7 @@ function Banner() {
     axios.get(url).then((response) => {
       const allProducts = response.data.all;
       setproducts(allProducts);
+      setLoading(true);
     });
   };
   return (
@@ -66,7 +69,27 @@ function Banner() {
           </p>
         </div>
         <div className="row">
-          {products.map((product, index) => (
+          {!loading ? (
+            <div style={{ marginLeft: "auto", marginRight: "auto" }}>
+              <ReactLoading
+                type={"spin"}
+                color={"gray"}
+                height={150}
+                width={150}
+              />
+            </div>
+          ) : (
+            products.map((product, index) => (
+              <div
+                className="col-lg-3 col-md-4 col-sm-6 col-6"
+                key={index}
+                style={{ marginBottom: "20px" }}
+              >
+                <TemplateProduct product={product} />
+              </div>
+            ))
+          )}
+          {/* {products.map((product, index) => (
             <div
               className="col-lg-3 col-md-4 col-sm-6 col-6"
               key={index}
@@ -74,7 +97,7 @@ function Banner() {
             >
               <TemplateProduct product={product} />
             </div>
-          ))}
+          ))} */}
         </div>
       </div>
       <Footer />
