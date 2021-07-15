@@ -14,6 +14,8 @@ function LoginPage() {
   const [showMessge, setShowMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [disable, setDisable] = useState(false);
+  const url = "https://rkeneithshopbackend.herokuapp.com/api/login";
+  const url1 = "http://localhost:5000/api/login";
 
   const login = (e) => {
     e.preventDefault();
@@ -29,7 +31,7 @@ function LoginPage() {
       setDisable(false);
     } else {
       axios
-        .post("https://rkeneithshopbackend.herokuapp.com/api/login", {
+        .post(url, {
           email: email,
           password: password,
         })
@@ -40,6 +42,7 @@ function LoginPage() {
             setIsLoading(false);
             setDisable(false);
             localStorage.setItem("token", response.data.token);
+            localStorage.setItem("user", JSON.stringify(response.data.result));
             history.push("/");
           } else if (!response.data.auth) {
             setShowMessage(response.data.msg);

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import $ from "jquery";
+
 import { useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
@@ -21,24 +22,29 @@ const handelMenu = () => {
 };
 
 const Menu = () => {
-  const [profil, setProfil] = useState();
+  const [profil, setProfil] = useState([]);
   const history = useHistory();
+
   const logoutUser = () => {
     localStorage.removeItem("token");
     history.push("/login");
   };
-
-  const infoprofile = () => {
-    const url = "https://rkeneithshopbackend.herokuapp.com/api/profileInfo";
-    axios.get(url).then((response) => {
-      setProfil(response.data.profileinfo);
-      console.log(response.data.profileinfo);
-    });
-  };
-
   useEffect(() => {
     infoprofile();
   }, []);
+
+  const infoprofile = () => {
+    const token = localStorage.getItem("token");
+    const url = "https://rkeneithshopbackend.herokuapp.com/api/profileInfo";
+    const url1 = "http://localhost:5000/api/profileInfo";
+    axios
+      .get(url, { headers: { "x-access-token": token } })
+      .then((response) => {
+        const info = response.data.profileinfo;
+        setProfil(info);
+      });
+  };
+
   return (
     <div>
       <div className="header">
@@ -69,7 +75,9 @@ const Menu = () => {
                           aria-expanded="false"
                         >
                           <img src={imgicon} alt="" />
-                          <span style={{ marginLeft: "4px" }}>rkeneith</span>
+                          <span style={{ marginLeft: "4px" }}>
+                            {profil.lastName}
+                          </span>
                         </Link>
                         <div
                           style={{ marginTop: "10px" }}

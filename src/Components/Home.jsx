@@ -14,6 +14,7 @@ function Banner() {
   const [loading, setLoading] = useState(false);
 
   const url = "https://rkeneithshopbackend.herokuapp.com/api/allproducts";
+  const url1 = "http://localhost:5000/api/allproducts";
 
   const token = localStorage.getItem("token");
 

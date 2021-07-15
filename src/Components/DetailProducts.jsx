@@ -21,19 +21,20 @@ const DetailProducts = (props) => {
   const [singleproduct, setSingleProduct] = useState([]);
   const [related, setRelated] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const url = "https://rkeneithshopbackend.herokuapp.com/api/singleproduct";
+  const url1 = "http://localhost:5000/api/singleproduct";
   useEffect(() => {
     getOneProduct();
     relatedproducts();
   }, []);
 
   const getOneProduct = () => {
-    axios
-      .get(`https://rkeneithshopbackend.herokuapp.com/api/singleproduct/${id}`)
-      .then((response) => {
-        const product = response.data.single;
-        setSingleProduct(product);
-        setLoading(true);
-      });
+    axios.get(`${url}/${id}`).then((response) => {
+      const product = response.data.single;
+      setSingleProduct(product);
+      setLoading(true);
+    });
   };
 
   const relatedproducts = () => {
