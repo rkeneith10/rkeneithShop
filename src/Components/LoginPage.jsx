@@ -42,7 +42,7 @@ function LoginPage() {
             setIsLoading(false);
             setDisable(false);
             localStorage.setItem("token", response.data.token);
-            localStorage.setItem("user", JSON.stringify(response.data.result));
+            // localStorage.setItem("user", JSON.stringify(response.data.result));
             history.push("/");
           } else if (!response.data.auth) {
             setShowMessage(response.data.msg);
