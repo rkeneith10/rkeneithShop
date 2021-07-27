@@ -42,7 +42,7 @@ function SignupPage() {
       setIsLoading(false);
     } else {
       axios
-        .post(url, {
+        .post(url1, {
           firstName: firstName,
           lastName: lastName,
           email: email,
@@ -58,6 +58,8 @@ function SignupPage() {
           } else if (response.data.success) {
             setShowMessage(response.data.msg);
             localStorage.setItem("token", response.data.token);
+            setIsLoading(false);
+            setDisable(false);
             history.push("/");
           }
         });

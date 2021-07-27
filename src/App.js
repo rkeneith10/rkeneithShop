@@ -10,6 +10,7 @@ import SignupPage from "./Components/SignupPage";
 import DetailProducts from "./Components/DetailProducts";
 import CheckOut from "./Components/CheckOut";
 import ScrollToTop from "./Components/ScrollToTop";
+import Profile from "./Components/Profile";
 
 function App(props) {
   return (
@@ -28,6 +29,7 @@ function App(props) {
         <Route path="/signup" component={SignupPage} />
         <Route path="/product/:id" component={DetailProducts} />
         <Route path="/checkout/:id" component={CheckOut} />
+        <Route path="/profil" component={Profile} />
       </Switch>
     </div>
   );

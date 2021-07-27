@@ -3,6 +3,7 @@ import products from "../data/products";
 import { useParams } from "react-router-dom";
 import MC_Button from "../images/MC_button.png";
 import Footer from "./Footer";
+import axios from "axios";
 
 import "../css/bootstrap.css";
 import "../css/nav.css";
@@ -10,7 +11,39 @@ import "../css/style.css";
 
 function CheckOut(props) {
   const { id } = useParams();
-  const product = products.find((x) => x.id === parseInt(id));
+  //const product = products.find((x) => x.id === parseInt(id));
+
+  const [product, setProduct] = useState([]);
+  const url = "https://rkeneithshopbackend.herokuapp.com/api/singleproduct";
+  const url1 = "http://localhost:5000/api/singleproduct";
+  const urlprofil = "https://rkeneithshopbackend.herokuapp.com/api/profileInfo";
+  const urlprofil1 = "http://localhost:5000/api/profileInfo";
+
+  const [profil, setProfil] = useState([]);
+
+  useEffect(() => {
+    getOneProduct();
+    infoprofile();
+  }, []);
+
+  const getOneProduct = () => {
+    axios.get(`${url}/${id}`).then((response) => {
+      setProduct(response.data.single);
+    });
+  };
+
+  const infoprofile = () => {
+    const token = localStorage.getItem("token");
+
+    axios
+      .get(urlprofil, { headers: { "x-access-token": token } })
+      .then((response) => {
+        const info = response.data.profileinfo;
+        setProfil(info);
+        // console.log(profil[1]);
+        // console.log("Login" + profil.lastName);
+      });
+  };
   const theclick = () => {
     console.log("The Click");
   };
@@ -28,7 +61,7 @@ function CheckOut(props) {
                 <div className="row">
                   <div className="col-md-4">
                     <img
-                      src={product.url}
+                      src={product.imageUrl}
                       alt=""
                       style={{ width: "150px", height: "150px" }}
                     />
@@ -46,7 +79,7 @@ function CheckOut(props) {
                           fontWeight: "bold",
                         }}
                       >
-                        ${!priceTotale ? product.id * 100 : priceTotale}
+                        ${!priceTotale ? product.price : priceTotale}
                       </span>
                     </p>
                   </div>
@@ -59,7 +92,15 @@ function CheckOut(props) {
 
                 <hr style={{ width: "90%", border: "1px solid #f0f0f0" }} />
 
-                <form>
+                {localStorage.getItem("token") ? (
+                  <div>
+                    <p
+                      style={{ fontSize: "17px", fontWeight: "bold" }}
+                    >{`${profil.lastName} ${profil.firstName}`}</p>
+                    <p style={{ fontSize: "14px" }}>{profil.adress}</p>
+                    <p style={{ fontSize: "14px" }}>{profil.phoneNumber}</p>
+                  </div>
+                ) : (
                   <div className="form-group">
                     <div className="col-md-6 btm">
                       <label>First Name</label>
@@ -95,16 +136,16 @@ function CheckOut(props) {
                         placeholder="Phone Number"
                       />
                     </div>
-                    <div style={{ marginLeft: "20px" }}>
-                      <img
-                        onClick={() => theclick()}
-                        src={MC_Button}
-                        alt=""
-                        style={{ width: "90px", height: "35px" }}
-                      />
-                    </div>
                   </div>
-                </form>
+                )}
+                <div style={{ marginLeft: "20px" }}>
+                  <img
+                    onClick={() => theclick()}
+                    src={MC_Button}
+                    alt=""
+                    style={{ width: "90px", height: "35px" }}
+                  />
+                </div>
               </div>
             </div>
             <div className="col-md-4"></div>

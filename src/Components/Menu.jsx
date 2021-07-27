@@ -22,7 +22,7 @@ const handelMenu = () => {
 };
 
 const Menu = () => {
-  const [profil, setProfil] = useState([]);
+  const [profil, setProfil] = useState("");
   const history = useHistory();
 
   const logoutUser = () => {
@@ -42,6 +42,8 @@ const Menu = () => {
       .then((response) => {
         const info = response.data.profileinfo;
         setProfil(info);
+        // console.log(profil[1]);
+        // console.log("Login" + profil.lastName);
       });
   };
 
@@ -84,7 +86,7 @@ const Menu = () => {
                           className="dropdown-menu dropdown-menu-right"
                           aria-labelledby="userDropdown"
                         >
-                          <Link className="dropdown-item" to="profile.html">
+                          <Link className="dropdown-item" to="/profil">
                             <img src={user} alt="" /> Profile
                           </Link>
 

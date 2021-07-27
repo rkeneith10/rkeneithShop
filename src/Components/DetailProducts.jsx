@@ -116,9 +116,9 @@ const DetailProducts = (props) => {
 
                     <Link
                       to={{
-                        //pathname: `/checkout/${product.id}`,
+                        pathname: `/checkout/${singleproduct._id}`,
                         state: {
-                          priceTotale: quantity * 100,
+                          priceTotale: quantity * singleproduct.price,
                         },
                       }}
                     >
