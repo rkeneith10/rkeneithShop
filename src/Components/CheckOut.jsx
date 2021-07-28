@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import products from "../data/products";
-import { useParams } from "react-router-dom";
+import { useParams, Redirect, useHistory } from "react-router-dom";
 import MC_Button from "../images/MC_button.png";
 import Footer from "./Footer";
 import axios from "axios";
+import {} from "react-router-dom";
 
 import "../css/bootstrap.css";
 import "../css/nav.css";
@@ -14,10 +14,14 @@ function CheckOut(props) {
   //const product = products.find((x) => x.id === parseInt(id));
 
   const [product, setProduct] = useState([]);
+  const history = useHistory();
   const url = "https://rkeneithshopbackend.herokuapp.com/api/singleproduct";
   const url1 = "http://localhost:5000/api/singleproduct";
   const urlprofil = "https://rkeneithshopbackend.herokuapp.com/api/profileInfo";
   const urlprofil1 = "http://localhost:5000/api/profileInfo";
+
+  const paymenturl1 = "http://localhost:5000/api/payment";
+  const paymenturl = "https://rkeneithshopbackend.herokuapp.com/api/payment";
 
   const [profil, setProfil] = useState([]);
 
@@ -45,7 +49,21 @@ function CheckOut(props) {
       });
   };
   const theclick = () => {
-    console.log("The Click");
+    console.log("click");
+    axios
+      .post(paymenturl, {
+        amount: localStorage.getItem("price"),
+        orderId: Math.floor(Math.random() * 1000),
+      })
+      .then((response) => {
+        if (response.data.success) {
+          // history.push(response.data.link);
+          window.location.href = response.data.link;
+          //console.log(response.data.link);
+        } else if (!response.data.success) {
+          console.log("error");
+        }
+      });
   };
 
   const { priceTotale } = props.location.state;

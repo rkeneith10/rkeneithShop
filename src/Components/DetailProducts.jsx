@@ -94,7 +94,7 @@ const DetailProducts = (props) => {
 
                     <p>
                       Quantity:{" "}
-                      <select value={quantity} onChange={handleChange}>
+                      {/* <select value={quantity} onChange={handleChange}>
                         <option value="1" selected>
                           1
                         </option>
@@ -103,7 +103,7 @@ const DetailProducts = (props) => {
                         <option value="4">4</option>
                         <option value="5">5</option>
                         <option value="6">6</option>
-                      </select>
+                      </select> */}
                     </p>
 
                     <button
@@ -118,11 +118,19 @@ const DetailProducts = (props) => {
                       to={{
                         pathname: `/checkout/${singleproduct._id}`,
                         state: {
-                          priceTotale: quantity * singleproduct.price,
+                          priceTotale: singleproduct.price,
                         },
                       }}
                     >
-                      <button className="btn btn-keneith">Buy Now</button>
+                      <button
+                        className="btn btn-keneith"
+                        onClick={localStorage.setItem(
+                          "price",
+                          singleproduct.price
+                        )}
+                      >
+                        Buy Now
+                      </button>
                     </Link>
                   </div>
                 </div>

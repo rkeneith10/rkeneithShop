@@ -31,7 +31,7 @@ function LoginPage() {
       setDisable(false);
     } else {
       axios
-        .post(url1, {
+        .post(url, {
           email: email,
           password: password,
         })
