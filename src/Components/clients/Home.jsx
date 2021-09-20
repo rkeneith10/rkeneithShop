@@ -5,9 +5,9 @@ import TemplateProduct from "./TemplateProduct";
 import ReactLoading from "react-loading";
 import axios from "axios";
 
-import "../css/bootstrap.css";
-import "../css/nav.css";
-import "../css/style.css";
+import "../../css/bootstrap.css";
+import "../../css/nav.css";
+import "../../css/style.css";
 
 function Banner() {
   const [products, setproducts] = useState([]);

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "../css/bootstrap.css";
-import "../css/loginCSS.css";
+import "../../css/bootstrap.css";
+import "../../css/loginCSS.css";
 import axios from "axios";
 import validator from "validator";
 import { useHistory } from "react-router-dom";

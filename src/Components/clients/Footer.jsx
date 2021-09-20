@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import "../css/bootstrap.css";
-import "../css/nav.css";
-import "../css/style.css";
-import "../css/mycss.css";
+import "../../css/bootstrap.css";
+import "../../css/nav.css";
+import "../../css/style.css";
+import "../../css/mycss.css";
 
 function Footer() {
   // const handleMessage = (e) => {

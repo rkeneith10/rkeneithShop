@@ -5,9 +5,9 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import ReactLoading from "react-loading";
 
-import "../css/bootstrap.css";
-import "../css/nav.css";
-import "../css/style.css";
+import "../../css/bootstrap.css";
+import "../../css/nav.css";
+import "../../css/style.css";
 import axios from "axios";
 
 const DetailProducts = (props) => {

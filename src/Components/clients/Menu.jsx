@@ -5,16 +5,16 @@ import { useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 import { MDBIcon } from "react-icons/fa";
-import user from "../images/User_20px.png";
-import logout from "../images/Shutdown_20px.png";
-import order from "../images/Box_20px.png";
+import user from "../../images/User_20px.png";
+import logout from "../../images/Shutdown_20px.png";
+import order from "../../images/Box_20px.png";
 
-import "../css/bootstrap.css";
-import "../css/nav.css";
-import "../css/style.css";
-import imageMenu from "../images/menu.png";
-import imgicon from "../images/Male User_32px.png";
-import Shopping_Cart_32px from "../images/Shopping_Cart_32px.png";
+import "../../css/bootstrap.css";
+import "../../css/nav.css";
+import "../../css/style.css";
+import imageMenu from "../../images/menu.png";
+import imgicon from "../../images/Male User_32px.png";
+import Shopping_Cart_32px from "../../images/Shopping_Cart_32px.png";
 import axios from "axios";
 
 const handelMenu = () => {

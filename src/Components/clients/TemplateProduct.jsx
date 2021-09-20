@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "../css/bootstrap.css";
-import "../css/nav.css";
-import "../css/style.css";
+import "../../css/bootstrap.css";
+import "../../css/nav.css";
+import "../../css/style.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Redirect, useHistory } from "react-router-dom";
-import MC_Button from "../images/MC_button.png";
+import MC_Button from "../../images/MC_button.png";
 import Footer from "./Footer";
 import axios from "axios";
 import {} from "react-router-dom";
 
-import "../css/bootstrap.css";
-import "../css/nav.css";
-import "../css/style.css";
+import "../../css/bootstrap.css";
+import "../../css/nav.css";
+import "../../css/style.css";
 
 function CheckOut(props) {
   const { id } = useParams();
