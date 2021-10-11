@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Redirect, useHistory } from "react-router-dom";
 import MC_Button from "../../images/MC_button.png";
+import contact from "../../images/Contacts_22px.png";
+import marker from "../../images/Marker_22px.png";
+import email from "../../images/SecuredLetter_22px.png";
+import phone from "../../images/Touchscreen_22px.png";
 import Footer from "./Footer";
 import axios from "axios";
 import {} from "react-router-dom";
@@ -112,11 +116,30 @@ function CheckOut(props) {
 
                 {localStorage.getItem("token") ? (
                   <div>
-                    <p
-                      style={{ fontSize: "17px", fontWeight: "bold" }}
-                    >{`${profil.lastName} ${profil.firstName}`}</p>
-                    <p style={{ fontSize: "14px" }}>{profil.adress}</p>
-                    <p style={{ fontSize: "14px" }}>{profil.phoneNumber}</p>
+                    <p style={{ fontSize: "17px", fontWeight: "bold" }}>
+                      <span style={{ marginRight: "8px" }}>
+                        <img src={contact} alt="" />
+                      </span>
+                      {`${profil.lastName} ${profil.firstName}`}
+                    </p>
+                    <p style={{ fontSize: "14px" }}>
+                      <span style={{ marginRight: "8px" }}>
+                        <img src={marker} alt="" />
+                      </span>
+                      {profil.adress}
+                    </p>
+                    <p style={{ fontSize: "14px" }}>
+                      <span style={{ marginRight: "8px" }}>
+                        <img src={email} alt="" />
+                      </span>
+                      {profil.email}
+                    </p>
+                    <p style={{ fontSize: "14px" }}>
+                      <span style={{ marginRight: "8px" }}>
+                        <img src={phone} alt="" />
+                      </span>
+                      +509 {profil.phoneNumber}
+                    </p>
                   </div>
                 ) : (
                   <div className="form-group">
@@ -161,7 +184,7 @@ function CheckOut(props) {
                     onClick={() => theclick()}
                     src={MC_Button}
                     alt=""
-                    style={{ width: "90px", height: "35px" }}
+                    style={{ width: "90px", height: "35px", cursor: "pointer" }}
                   />
                 </div>
               </div>

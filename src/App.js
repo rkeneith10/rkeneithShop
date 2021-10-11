@@ -11,21 +11,21 @@ import DetailProducts from "./Components/clients/DetailProducts";
 import CheckOut from "./Components/clients/CheckOut";
 import ScrollToTop from "./Components/clients/ScrollToTop";
 import Profile from "./Components/clients/Profile";
-import HomeVendor from "./Components/vendors/HomeVendor";
-import Addproducts from "./Components/vendors/Addproducts";
+// import HomeVendor from "./Components/vendors/HomeVendor";
+// import Addproducts from "./Components/vendors/Addproducts";
 
 function App(props) {
   return (
     <div>
       <ScrollToTop />
-      {/* {props.location.pathname === "/login" ||
+      {props.location.pathname === "/login" ||
       props.location.pathname === "/signup" ? (
         ""
       ) : (
         <Menu />
-      )} */}
+      )}
 
-      {props.location.pathname === "/login" ||
+      {/* {props.location.pathname === "/login" ||
       props.location.pathname === "/signup" ? (
         ""
       ) : props.location.pathname === "/vendor" ||
@@ -33,7 +33,7 @@ function App(props) {
         ""
       ) : (
         <Menu />
-      )}
+      )} */}
 
       <Switch>
         <Route exact path="/" component={Home} />
@@ -42,8 +42,8 @@ function App(props) {
         <Route path="/product/:id" component={DetailProducts} />
         <Route path="/checkout/:id" component={CheckOut} />
         <Route path="/profil" component={Profile} />
-        <Route path="/vendor" component={HomeVendor} />
-        <Route path="/addproducts" component={Addproducts} />
+        {/* <Route path="/vendor" component={HomeVendor} />
+        <Route path="/addproducts" component={Addproducts} /> */}
       </Switch>
     </div>
   );
