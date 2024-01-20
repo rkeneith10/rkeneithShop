@@ -24,13 +24,17 @@ const DetailProducts = (props) => {
 
   const url = "https://rkeneithshopbackend.herokuapp.com/api/singleproduct";
   const url1 = "http://localhost:5000/api/singleproduct";
+
+  const relatedP =
+    "https://rkeneithshopbackend.herokuapp.com/api/relatedproduct";
+  const relatedP1 = "http://localhost:5000/api/relatedproduct";
   useEffect(() => {
     getOneProduct();
     relatedproducts();
   }, []);
 
   const getOneProduct = () => {
-    axios.get(`${url}/${id}`).then((response) => {
+    axios.get(`${url1}/${id}`).then((response) => {
       const product = response.data.single;
       setSingleProduct(product);
       setLoading(true);
@@ -38,12 +42,10 @@ const DetailProducts = (props) => {
   };
 
   const relatedproducts = () => {
-    axios
-      .get(`https://rkeneithshopbackend.herokuapp.com/api/relatedproduct/${id}`)
-      .then((response) => {
-        const relatedproduct = response.data.relatedProduct;
-        setRelated(relatedproduct);
-      });
+    axios.get(`${relatedP1}/${id}`).then((response) => {
+      const relatedproduct = response.data.relatedProduct;
+      setRelated(relatedproduct);
+    });
   };
 
   const addToCart = (product) => {
@@ -54,6 +56,7 @@ const DetailProducts = (props) => {
   const handleChange = (e) => {
     const selectedNumber = e.target.value;
     setQuantity(selectedNumber);
+    localStorage.setItem("quantite", selectedNumber);
   };
 
   return (
@@ -94,7 +97,7 @@ const DetailProducts = (props) => {
 
                     <p>
                       Quantity:{" "}
-                      {/* <select value={quantity} onChange={handleChange}>
+                      <select value={quantity} onChange={handleChange}>
                         <option value="1" selected>
                           1
                         </option>
@@ -103,7 +106,7 @@ const DetailProducts = (props) => {
                         <option value="4">4</option>
                         <option value="5">5</option>
                         <option value="6">6</option>
-                      </select> */}
+                      </select>
                     </p>
 
                     <button
@@ -117,17 +120,27 @@ const DetailProducts = (props) => {
                     <Link
                       to={{
                         pathname: `/checkout/${singleproduct._id}`,
-                        state: {
-                          priceTotale: singleproduct.price,
-                        },
+                        // state: {
+                        //   priceTotale: singleproduct.price,
+                        // },
                       }}
                     >
                       <button
                         className="btn btn-keneith"
-                        onClick={localStorage.setItem(
-                          "price",
-                          singleproduct.price
-                        )}
+                        // onClick={localStorage.setItem(
+                        //   "price",
+                        //   singleproduct.price * localStorage.getItem("quantite")
+                        // )}
+
+                        onClick={
+                          localStorage.getItem("quantite")
+                            ? localStorage.setItem(
+                                "price",
+                                singleproduct.price *
+                                  localStorage.getItem("quantite")
+                              )
+                            : localStorage.setItem("price", singleproduct.price)
+                        }
                       >
                         Buy Now
                       </button>
@@ -140,43 +153,47 @@ const DetailProducts = (props) => {
             {/* <hr style={{ width: "80%", border: "1 solid #7e7f84" }} /> */}
 
             {/* kjsjdsk */}
-            {/* 
-          <div className="related" style={{ marginTop: "30px" }}>
-            <p
-              style={{ color: "#f45a40", fontWeight: "bold", fontSize: "20px" }}
-            >
-              RELATED PRODUCTS
-            </p>
-            <div className="related-grids">
-              {related.splice(0, 5).map((r, index) => (
-                <div className="related-grid" key={index}>
-                  <div className="col-md-9 ">
-                    <Link to={`/product/${r._id}`}>
-                      <div className="col-md-3 related-left-left">
-                        <img src={r.imageUrl} alt="" />
+
+            <div className="related" style={{ marginTop: "30px" }}>
+              <p
+                style={{
+                  color: "#f45a40",
+                  fontWeight: "bold",
+                  fontSize: "20px",
+                }}
+              >
+                RELATED PRODUCTS
+              </p>
+              <div className="related-grids">
+                {related.splice(0, 5).map((r, index) => (
+                  <div className="related-grid" key={index}>
+                    <div className="col-md-9 ">
+                      <Link to={`/product/${r._id}`}>
+                        <div className="col-md-3 related-left-left">
+                          <img src={r.imageUrl} alt="image" />
+                        </div>
+                      </Link>
+                      <div className="col-md-9 related-left-right">
+                        <p style={{ color: "#f45a40", fontSize: "20px" }}>
+                          {r.title}
+                        </p>
+                        <p>{r.description}</p>
+
+                        <p style={{ fontSize: "13px", color: "#7e7f84" }}>
+                          Price:
+                          <span style={{ fontSize: "19px", color: "#f45a40" }}>
+                            ${r.price}
+                          </span>
+                        </p>
                       </div>
-                    </Link>
-                    <div className="col-md-9 related-left-right">
-                      <p style={{ color: "#f45a40", fontSize: "20px" }}>
-                        {r.title}
-                      </p>
-                      <p>{r.description}</p>
-
-                      <p style={{ fontSize: "13px", color: "#7e7f84" }}>
-                        Price:
-                        <span style={{ fontSize: "19px", color: "#f45a40" }}>
-                          ${r.price}
-                        </span>
-                      </p>
+                      <div className="clearfix"> </div>
                     </div>
-                    <div className="clearfix"> </div>
-                  </div>
 
-                  <div class="clearfix"> </div>
-                </div>
-              ))}
+                    <div class="clearfix"> </div>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div> */}
           </div>
         </div>
       )}

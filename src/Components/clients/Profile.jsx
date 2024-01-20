@@ -13,7 +13,7 @@ const Profile = () => {
     const url = "https://rkeneithshopbackend.herokuapp.com/api/profileInfo";
     const url1 = "http://localhost:5000/api/profileInfo";
     axios
-      .get(url, { headers: { "x-access-token": token } })
+      .get(url1, { headers: { "x-access-token": token } })
       .then((response) => {
         const info = response.data.profileinfo;
         setProfil(info);

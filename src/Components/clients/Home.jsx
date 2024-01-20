@@ -29,7 +29,7 @@ function Banner() {
   };
 
   const getAllProducts = () => {
-    axios.get(url).then((response) => {
+    axios.get(url1).then((response) => {
       const allProducts = response.data.all;
       setproducts(allProducts);
       setLoading(true);

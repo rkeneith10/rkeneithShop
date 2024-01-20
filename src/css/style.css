@@ -31,11 +31,6 @@ body {
 .btn-addToCard:hover {
   color: #f45a40;
 }
-.moncashbutton {
-  background: url("../images/MC_button.png") no-repeat;
-  border: none;
-  cursor: pointer;
-}
 
 .checkoutCard {
   width: 100%;
@@ -47,6 +42,14 @@ body {
 .checkoutCard1 {
   width: 100%;
   height: auto;
+  background-color: white;
+  border: "1px solid #f0f0f0";
+  padding: 10px;
+}
+
+.checkoutCard2 {
+  width: 100%;
+  height: 400px;
   background-color: white;
   border: "1px solid #f0f0f0";
   padding: 10px;
@@ -788,7 +791,7 @@ a.detail1 {
   display: inline-block;
 }
 .social-icons ul a.facebook {
-  background: url(../images/social.png) no-repeat 0px 0px;
+  /* background: url(../images/social.png) no-repeat 0px 0px; */
   width: 22px;
   height: 22px;
   display: block;
@@ -799,7 +802,7 @@ a.detail1 {
   -ms-transition: 0.5s all;
 }
 .social-icons ul a.twitter {
-  background: url(../images/social.png) no-repeat -33px 0px;
+  /* background: url(../images/social.png) no-repeat -33px 0px; */
   width: 22px;
   height: 22px;
   display: block;
@@ -811,7 +814,7 @@ a.detail1 {
   -ms-transition: 0.5s all;
 }
 .social-icons ul a.chrome {
-  background: url(../images/social.png) no-repeat -70px 0px;
+  /* background: url(../images/social.png) no-repeat -70px 0px; */
   width: 22px;
   height: 22px;
   display: block;
@@ -823,7 +826,7 @@ a.detail1 {
   -ms-transition: 0.5s all;
 }
 .social-icons ul a.vimeo {
-  background: url(../images/social.png) no-repeat -106px 0px;
+  /* background: url(../images/social.png) no-repeat -106px 0px; */
   width: 22px;
   height: 22px;
   display: block;
@@ -835,7 +838,7 @@ a.detail1 {
   -ms-transition: 0.5s all;
 }
 .social-icons ul a.rss {
-  background: url(../images/social.png) no-repeat -143px 0px;
+  /* background: url(../images/social.png) no-repeat -143px 0px; */
   width: 22px;
   height: 22px;
   display: block;
@@ -845,7 +848,7 @@ a.detail1 {
   -moz-transition: 0.5s all;
   -ms-transition: 0.5s all;
 }
-.social-icons ul a.facebook:hover {
+/* .social-icons ul a.facebook:hover {
   background: url(../images/social.png) no-repeat 0px -23px;
 }
 .social-icons ul a.twitter:hover {
@@ -859,7 +862,7 @@ a.detail1 {
 }
 .social-icons ul a.rss:hover {
   background: url(../images/social.png) no-repeat -143px -23px;
-}
+} */
 /* .iconAccount {
   background: url(../images//iconAccount.png) no-repeat;
 } */
@@ -1632,6 +1635,9 @@ h4.sold-out a {
     height: 90px;
   }
   .checkoutCard1 {
+    height: 600px;
+  }
+  .checkoutCard2 {
     height: 600px;
   }
 
